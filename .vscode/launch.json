@@ -6,6 +6,11 @@
       "request": "launch",
       "name": "デバッグ実行",
       "skipFiles": ["<node_internals>/**"],
+      /*メモ..."runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ts-node" としていたときは、
+      ブレークポイントで停止していなかった。progarmパラメータを使うと、VSCodeのデバッガーはNode.jsプロセスを
+      直接起動してからts-nodeを読み込むため、デバッグシンボルが正しく維持されます。一方、
+      runtimeExecutieではts-nodeをラッパーとして使用するため、デバッグ連携がうまくいかないことがある
+　　　*/
       "program": "${workspaceFolder}/node_modules/ts-node/dist/bin.js",
       "args": ["${file}"],
       "env": {
