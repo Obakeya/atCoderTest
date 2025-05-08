@@ -1,16 +1,20 @@
 export function solve (input: string): string {
   const lines = input.trim().split('\n')
-  const [a, b] = lines[0].split(' ').map(Number)
-  const c = (a * b) % 2
-  return c === 0 ? 'Even' : 'Odd'
+  const a = lines[0]
+  let b = 0
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] === '1') {
+      b++
+    }
+  }
+  return b.toString()
 }
 
 // --- 提出時ここから削除 ---
 // デバッグ用コード
 if (process.env.NODE_ENV === 'test') {
-  const testInput = `1 21
+  const testInput = `000
 `
-
   console.log('===== テスト =====')
   console.log(testInput)
   console.log('===== 結果 =====')

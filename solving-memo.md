@@ -12,3 +12,19 @@
 ラテン語の「modulus(尺 t 度、基準)」に由来している。数学的には「mod」と略されることもあり、「n modulo m」または「n mod m」と表記され、「n を m で割った余り」を意味する。
 
 計算量が多い場合は、ビット演算を利用したほうがパフォーマンスは良くなる。
+
+### 文字列から特定の文字のカウントをする
+
+```typescript
+function countOnes(str: string): number {
+  let count = 0
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === '1') {
+      count++
+    }
+  }
+  return count
+}
+```
+
+小さな文字列では、Split 法や正規表現でもパフォーマンスに大差はない。ループ法は、大量のデータを処理する場合や、何度も関数が呼ばれる場合に強い。

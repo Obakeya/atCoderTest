@@ -4,27 +4,37 @@ export function solve (input: string): string {
   return ''
 }
 
-// --- 提出時ここから削除 ---
-// デバッグ用コード
+// テスト環境の場合
 if (process.env.NODE_ENV === 'test') {
   const testInput = ``
-
   console.log('===== テスト =====')
   console.log(testInput)
   console.log('===== 結果 =====')
   console.log(solve(testInput))
-} else {
-  // ローカル実行用（Windows対応）
-  if (require.main === module) {
-    const fs = require('fs')
+}
+// ローカル実行環境の場合（テスト環境でない && require.mainがmodule）
+else if (require.main === module) {
+  // node.jsの標準モジュール
+  const fs = require('fs')
+  try {
+    // Windows/Unix対応
     const input =
       process.platform === 'win32'
         ? fs.readFileSync(0, 'utf8')
         : fs.readFileSync('/dev/stdin', 'utf8')
     console.log(solve(input))
+  } catch (e) {
+    const input = []
+    require('readline')
+      .createInterface({ input: process.stdin })
+      .on('line', line => input.push(line))
+      .on('close', () => console.log(solve(input.join('\n'))))
   }
 }
-// --- 提出時ここまで削除し、下記のコメントアウトを解除する
-// const fs = require('fs')
-// const input = fs.readFileSync('/dev/stdin', 'utf8')
-// console.log(solve(input))
+
+// 提出環境では以下が自動的に実行される
+if (!process.env.NODE_ENV && require.main === module) {
+  const fs = require('fs')
+  const input = fs.readFileSync('/dev/stdin', 'utf8')
+  console.log(solve(input))
+}
