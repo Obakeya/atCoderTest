@@ -1,18 +1,43 @@
 export function solve (input: string): string {
   const lines = input.trim().split('\n')
-  //ロジックの実装
-  return ''
+  const length = +lines[0]
+  const nums = lines[1].split(' ').map(s => +s)
+  let divisionLoopCount = 0
+  let loop = true
+
+  //2で割った余りが0で無くなるまで、ループする
+  //2で割った数を配列に再度格納する
+  //2で割った余りが0でない数字が現れた時点で、ループを終了する
+
+  while (loop) {
+    for (let i = 0; i < length; i++) {
+      const rem = nums[i] % 2
+      if (rem !== 0) {
+        loop = false
+        break
+      }
+      nums[i] = nums[i] / 2
+
+      if (i === length - 1) {
+        divisionLoopCount++
+      }
+    }
+  }
+
+  return divisionLoopCount.toString()
 }
 
 // テスト環境の場合
 if (process.env.NODE_ENV === 'test') {
-  const testInput = ``
+  const testInput = `3
+8 12 40
+`
   console.log('===== テスト =====')
   console.log(testInput)
   console.log('===== 結果 =====')
   console.log(solve(testInput))
 }
-// ローカル実行環境の場合（テスト環境でない && require.mainがmodule）
+// ローカル実行環境の場合
 else if (require.main === module) {
   // node.jsの標準モジュール
   const fs = require('fs')
