@@ -1,4 +1,8 @@
-/**　コミット時問題のurlを書く */
+/* 他人の答えを参考にしながら書き直したコード。
+自分のオリジナルのコードよりも実行時間が x ms時間
+メモリは y kb 改善した。
+**/
+
 export function solve (input: string): string {
   const lines = input.trim().split('\n')
   /**　ロジックの実装 */
@@ -12,6 +16,16 @@ if (process.env.NODE_ENV === 'test') {
   console.log(testInput)
   console.log('===== 結果 =====')
   console.log(solve(testInput))
+  const beforeUseMemory = Number(0)
+  const afterUseMemory = Number(0)
+  if (beforeUseMemory !== 0) {
+    console.log(`改善したメモリkb:${beforeUseMemory - afterUseMemory}`)
+  }
+  const beforeTime = Number(0)
+  const afterTime = Number(0)
+  if (beforeTime !== 0) {
+    console.log(`改善した実行時間ms:${beforeTime - afterTime}`)
+  }
 }
 // ローカル実行環境の場合（テスト環境でない && require.mainがmodule）
 else if (require.main === module) {

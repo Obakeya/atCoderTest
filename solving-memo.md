@@ -65,3 +65,11 @@ const numbers2 = line.split(' ').map(Number) // 可読性が高く、ほぼ同�
 
 割り算のあまり..`remainder`
 割り算..`division`
+
+### 数字文字列を桁ごとの数字に変換する
+
+```typescript
+const digits = Array.from(String(1234), Number)
+
+const digits2 = Array.from('1234', Number)
+```
