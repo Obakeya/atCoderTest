@@ -1,3 +1,12 @@
+/*
+ * VSCode F5ファイル単体実行の仕組み:
+ * 1. "program"パラメータ: ts-nodeのバイナリを指定
+ * 2. "args": ["${file}"] が重要:
+ *    - ${file}はVSCodeの定義済み変数で「現在アクティブなファイルのパス」を表す
+ *    - F5実行時、この変数は実際のファイルパスに置換される
+ * 3. 結果: ts-nodeが現在開いているファイルのみを実行する
+ *    (例: "node ./node_modules/ts-node/dist/bin.js ./src/myCurrentFile.ts" 相当のコマンドが実行される)
+ */
 {
   "version": "0.2.0",
   "configurations": [
