@@ -143,3 +143,21 @@ const parts = input
   .slice(1)
   .map(x => +x)
 ```
+
+### ある数字を整数かどうか検証する
+
+```typescript
+Number.isInteger(value) //整数ならtrueを返す。 //ES6以降で使える
+```
+
+上記が使えない場合、
+
+```typescript
+value % 1 === 0 //整数ならtrue
+```
+
+### 小数点以下を切り捨てる
+
+```typescript
+Math.floor(value)
+```
