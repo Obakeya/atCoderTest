@@ -161,3 +161,42 @@ value % 1 === 0 //整数ならtrue
 ```typescript
 Math.floor(value)
 ```
+
+### 文字列の一部分を取り出す一効率のいい方法
+
+`slice()`メソッドを推奨する。パフォーマンスが良く、文字列の後ろから値を取ることも容易。
+
+基本的な使い方
+
+```typescript
+const str = 'Hello, TypeScript!'
+
+// 基本形： 開始位置から終了位置まで（終了位置の文字は含まない）
+str.slice(0, 5) // 'Hello'
+
+// 開始位置のみ指定： 開始位置から文字列の最後まで取得
+str.slice(7) // TypeScript!
+
+//全文字取得
+str.slice() // 'Hello, TypeScript!'
+str.slice(0) // 'Hello, TypeScript!'
+```
+
+負のインデックスの使用（末尾からカウント）
+
+```typescript
+cons str = 'Hello, TypeScript!'
+
+// 末尾から数えて5文字目から末尾まで
+str.slice(-5) // 'ript!'
+
+// 末尾から数えて12文字目から、末尾から数えて7文字
+str.slice(-12, -7) // ' TypeSc'
+
+// 先頭から5文字目まで、末尾から数えて1文字目を除く
+str.slice(0, -1) // 'Hello, TypeScript'
+
+// 末尾の5文字を削除
+str.slice(0,-5) // 'Hello, TypeSc'
+
+```
