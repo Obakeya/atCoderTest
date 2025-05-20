@@ -200,3 +200,11 @@ str.slice(0, -1) // 'Hello, TypeScript'
 str.slice(0,-5) // 'Hello, TypeSc'
 
 ```
+
+### マンハッタン距離を求める時
+
+```typescript
+Math.abs(5) //5
+Math.abs(-5) //5
+Math.abs(x - xi)
+```
