@@ -1,5 +1,5 @@
 /**　コミット時問題のurlを書く */
-export function solve (input: string): string {
+export function solve (input: string): number {
   const tokens = input.trim().split(/\s+/) // \s人気の空白文字 +は直前のパターンの1回以上の繰り返し
   let index = 0
 
@@ -21,7 +21,7 @@ export function solve (input: string): string {
 
   // ここに問題固有のロジックを実装
 
-  return '' // 解答を返す
+  return 0 // 解答を返す
 }
 
 // テスト環境の場合
@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'test') {
   console.log('===== テスト =====')
   console.log(testInput)
   console.log('===== 結果 =====')
-  console.log(solve(testInput))
+  console.log(solve(testInput).toString())
 }
 // ローカル実行環境の場合（テスト環境でない && require.mainがmodule）
 else if (require.main === module) {
@@ -42,12 +42,12 @@ else if (require.main === module) {
       process.platform === 'win32'
         ? fs.readFileSync(0, 'utf8')
         : fs.readFileSync('/dev/stdin', 'utf8')
-    console.log(solve(input))
+    console.log(solve(input).toString())
   } catch (e) {
     const input = []
     require('readline')
       .createInterface({ input: process.stdin })
       .on('line', line => input.push(line))
-      .on('close', () => console.log(solve(input.join('\n'))))
+      .on('close', () => console.log(solve(input.join('\n')).toString()))
   }
 }

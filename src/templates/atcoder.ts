@@ -1,8 +1,8 @@
 /**　コミット時問題のurlを書く */
-export function solve (input: string): string {
+export function solve (input: string): number {
   const lines = input.trim().split('\n')
   /**　ロジックの実装 */
-  return ''
+  return 0
 }
 
 // テスト環境の場合
@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === 'test') {
   console.log('===== テスト =====')
   console.log(testInput)
   console.log('===== 結果 =====')
-  console.log(solve(testInput))
+  console.log(solve(testInput).toString())
 }
 // ローカル実行環境の場合（テスト環境でない && require.mainがmodule）
 else if (require.main === module) {
@@ -29,6 +29,6 @@ else if (require.main === module) {
     require('readline')
       .createInterface({ input: process.stdin })
       .on('line', line => input.push(line))
-      .on('close', () => console.log(solve(input.join('\n'))))
+      .on('close', () => console.log(solve(input.join('\n')).toString()))
   }
 }
