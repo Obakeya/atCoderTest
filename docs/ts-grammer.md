@@ -203,8 +203,19 @@ str.slice(0,-5) // 'Hello, TypeSc'
 
 ### マンハッタン距離を求める時
 
+絶対値を求める時に活躍します
+
 ```typescript
 Math.abs(5) //5
 Math.abs(-5) //5
 Math.abs(x - xi)
+```
+
+### 四捨五入をしたいとき
+
+`Math.round()`を使おう
+
+```typescript
+const [A, B] = input.trim().split(' ').map(Number)
+return Math.round(A / B).toString()
 ```

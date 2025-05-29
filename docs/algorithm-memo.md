@@ -12,7 +12,7 @@
 
 ```typescript
 function binarySearch(arr:number[], target:number) : number{
-    let left - 0;
+    let left = - 0;
     let right = arr.length - 1;
 
     while (left <= right){
