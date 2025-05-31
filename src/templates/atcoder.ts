@@ -1,5 +1,5 @@
 /**　コミット時問題のurlを書く */
-export function solve (input: string): number {
+export function solve (input: string) {
   const lines = input.trim().split('\n')
   /**　ロジックの実装 */
   return 0
