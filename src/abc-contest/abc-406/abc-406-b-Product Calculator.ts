@@ -1,14 +1,34 @@
-/**　コミット時問題のurlを書く */
-export function solve (input: string) {
-  const [A, B, C, D] = input.trim().split(' ').map(Number)
-  /**　ロジックの実装 */
-  if (A > C || (A === C && B >= D)) return 'Yes'
-  return 'No'
+/** https://atcoder.jp/contests/abc406/tasks/abc406_b
+ * 問題分に伴う実装は簡単にできたが、桁数による数値計算の精度がぶれることに
+ * 気づけず、正答にもっていくことに苦労した。
+ *
+ * 通常のnumberでは、Kが15桁以上（千兆）になると計算がぶれる。
+ * そのため、入力時点でBigInt配列に変換するべし
+ *
+ */
+export function solve (input: string): string {
+  const [NK, AN] = input.trim().split('\n')
+  const [N, K] = NK.split(' ').map(Number)
+  const A = AN.split(' ').map(BigInt)
+
+  let now = BigInt(1)
+  const KBig = BigInt(K)
+  const ten = BigInt(10)
+
+  for (let i = 0; i < N; i++) {
+    now *= A[i]
+    if (now >= ten ** KBig) {
+      now = BigInt(1)
+    }
+  }
+
+  return now.toString()
 }
 
 // テスト環境の場合
 if (process.env.NODE_ENV === 'test') {
-  const testInput = `12 0 11 30
+  const testInput = `5 2
+7 13 3 2 5
 
 `
   console.log('===== テスト =====')

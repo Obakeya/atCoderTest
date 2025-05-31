@@ -13,22 +13,9 @@ if (process.env.NODE_ENV === 'test') {
   console.log('===== 結果 =====')
   console.log(solve(testInput).toString())
 }
-// ローカル実行環境の場合（テスト環境でない && require.mainがmodule）
+// ローカル実行環境
 else if (require.main === module) {
-  // node.jsの標準モジュール
   const fs = require('fs')
-  try {
-    // Windows/Unix対応
-    const input =
-      process.platform === 'win32'
-        ? fs.readFileSync(0, 'utf8')
-        : fs.readFileSync('/dev/stdin', 'utf8')
-    console.log(solve(input))
-  } catch (e) {
-    const input = []
-    require('readline')
-      .createInterface({ input: process.stdin })
-      .on('line', line => input.push(line))
-      .on('close', () => console.log(solve(input.join('\n')).toString()))
-  }
+  const input = fs.readFileSync(0, 'utf8') // 標準入力を直接読み取り
+  console.log(solve(input).toString())
 }
