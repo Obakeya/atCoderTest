@@ -5,6 +5,7 @@
 - 積（掛け算の結果）:Product
 - 商（割り算の結果）：Quotient
 - 割り算のあまり：Remainder, Modulus
+- べき乗：Exponentiation
 
 ### 数学的な用語
 
