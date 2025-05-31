@@ -198,3 +198,137 @@ const digits2 = Array.from('1234', Number)
 ```typescript
 const str = num.toString()
 ```
+
+# 配列系操作
+
+## 配列のうち、ある位置から特定の位置までの値を取得したい場合
+
+手法別のパフォーマンス特性
+
+1.`slice()` を利用する...
+新しい配列を作成するため、大きな配列では メモリコストが高くなります。
+
+```typescript
+const receipts = getReceiptList() // 10 万件の入金データ
+const targetReceipts = receipts.slice(1000, 2000) // 新しい配列作成
+```
+
+2. インデックス直接参照...メモリの効率性重視
+
+```typescript
+const receipts = getReceiptList()
+const startIndex = 1000
+const endIndex = 2000
+
+// 新しい配列を作らずに処理
+for (let i = startIndex; i < endIndex; i++) {
+  processReceipt(receipts[i]) // メモリコピーなし
+}
+```
+
+3. サブアレイビュー...最高性能  
+   通常の配列操作では「データのコピー」が発生するが、サブアレイビューは「参照とインデックス計算のみ」で動作するため、メモリ帯域幅と CPU 処理の両方で大幅な効率化を実現します。
+
+```typescript
+class ReceiptView {
+  constructor(
+    private receipts: Receipt[], // 参照のみ（8 バイト）
+    private startIdx: number, // インデックス（4 バイト）
+    private endIdx: number // インデックス（4 バイト）
+  ) {} // 合計 16 バイトのメモリ使用量
+
+  getReceipt(index: number): Receipt {
+    // 単純な加算のみ（1CPU 命令）
+    return this.receipts[this.startIdx + index]
+  }
+
+  processMatching(): void {
+    // ループでもメモリコピーは発生しない
+    for (let i = 0; i < this.length; i++) {
+      const receipt = this.getReceipt(i) // 参照取得のみ
+      // 入金消込処理
+    }
+  }
+}
+
+// 使用例：10 万件の配列から 1 万件を処理
+const allReceipts = getReceiptList() // 仮に 400MB
+const receiptView = new ReceiptView(allReceipts, 1000, 11000) // 16 バイト
+
+// slice()なら 40MB の新しい配列作成が必要
+// ビューなら 16 バイトで同等の操作が可能
+```
+
+# キー付きコレクション系操作
+
+## 2 つの数字を使ってキーにしたこコレクションを利用したい場合
+
+数値ハッシュを推奨する
+
+```typescript
+const visited = new Map<number, boolean>()
+
+function hash(x: number, y: number): number {
+  return x * 100000 + Y
+}
+
+//使用例：迷路探索
+function dfs(x: number, y: number): void {
+  const key = hash(x, y)
+  if (visited.has(key)) return
+
+  visited.set(key, true)
+}
+```
+
+## すでにある値を変えたい場合、 map.set()を利用する
+
+```typescript
+const matchingMap = new Map<string, Matching>()
+
+// 新規追加
+const newMatching = new Matching(1001, 2001, 50000)
+matchingMap.set('1001-2001', newMatching)
+
+// 既存値の更新（同じ set メソッド）
+const updatedMatching = new Matching(1001, 2001, 75000)
+matchingMap.set('1001-2001', updatedMatching) // 値が置き換わる
+
+// 値の累積更新
+function addReceiptAmount(
+  billingId: number,
+  receiptId: number,
+  amount: number
+): void {
+  const key = `${billingId}-${receiptId}`
+  const existing = matchingMap.get(key)
+
+  if (existing) {
+    // 既存値更新
+    existing.amount += amount
+    matchingMap.set(key, existing)
+  } else {
+    // 新規追加
+    const newMatching = new Matching(billingId, receiptId, amount)
+    matchingMap.set(key, newMatching)
+  }
+}
+```
+
+## すでにあるキーを削除したい場合、 delete()を利用する
+
+```typescript
+const matchingMap = new Map<string, Matching>()
+
+// 消込データの追加
+matchingMap.set('1001-2001', new Matching(1001, 2001, 50000))
+matchingMap.set('1002-2002', new Matching(1002, 2002, 75000))
+
+// 特定の消込データを削除
+const deleted = matchingMap.delete('1001-2001') // true（削除成功）
+const notFound = matchingMap.delete('9999-9999') // false（存在しない）
+
+// 削除後の状態確認
+console.log(matchingMap.has('1001-2001')) // false
+console.log(matchingMap.size) // 1
+```

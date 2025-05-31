@@ -1,6 +1,7 @@
 /**　
- 
- * 
+ 数学的アプローチにより公式を導出したことで、計算量を抑えられた
+ * 実行時間 81ms → 70ms
+ * メモリの使用量 66136kib → 68920 kib メモリは意外と悪化した。
  */
 export function solve (input: string): Number {
   const digits = Array.from(input.trim(), Number)
