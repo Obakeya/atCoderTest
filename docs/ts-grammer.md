@@ -1,5 +1,22 @@
 # 数学系演算
 
+### 複数の数値の最も小さい値または最も大きい値を求めたいとき
+
+```typescript
+const a = 10,
+  b = 5
+const smaller = Math.min(a, b) // 5
+
+// 2 つ以上の値でも同じ文法
+console.log(Math.min(10, 5, 8, 3)) // 3
+
+// 配列の場合はスプレッド演算子
+const numbers = [10, 5, 8, 3]
+console.log(Math.min(...numbers)) // 3
+```
+
+差ぢだいとぉ
+
 ### 余りを求めたいときはモジュロ演算子を使う
 
 モジュロ演算子(%)は、割り算の余りを求める演算子。
@@ -211,6 +228,17 @@ const str = num.toString()
 ```typescript
 const receipts = getReceiptList() // 10 万件の入金データ
 const targetReceipts = receipts.slice(1000, 2000) // 新しい配列作成
+```
+
+## すべて 0 の値を持つ配列を指定のサイズで用意する
+
+imos 法で利用する。Array(n).fill(0)を利用する
+
+```typescript
+const n = 5
+const arr = Array(n).fill(0)
+//Array(n)で空っぽの配列を作り、
+//fill()で配列のすべてを指定した要素で埋める
 ```
 
 2. インデックス直接参照...メモリの効率性重視
