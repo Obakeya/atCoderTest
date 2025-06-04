@@ -1,4 +1,3 @@
-/**　コミット時問題のurlを書く */
 export function solve (input: string) {
   const tokens = input.trim().split(/\s+/) // \s人気の空白文字 +は直前のパターンの1回以上の繰り返し
   let index = 0
