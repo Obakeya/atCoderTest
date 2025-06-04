@@ -1,16 +1,18 @@
 ## 📚 **STEP 1: 基礎実装パターンの習得**
 
+Claude Sonnet 4 と一緒に作成した、atCoder ベースで、データ構造とアルゴリズムについて学習していくためのロードマップ。
+
 ### 1.1 高速 I/O・基本操作
 
 **習得目標：** 面接での実装速度向上、基本的な入出力処理
 
 #### AtCoder 練習問題
 
-- [ ] **ABC 086 A - Product** (基本入出力)
-- [ ] **ABC 081 A - Placing Marbles** (文字列処理)
+- [x] **ABC 086 A - Product** (基本入出力)
+- [x] **ABC 081 A - Placing Marbles** (文字列処理)
 - [ ] **ABC 085 A - Already 2018** (文字列操作)
-- [ ] **ABC 083 B - Some Sums** (数値の桁処理)
-- [ ] **ABC 087 B - Coins** (三重ループ)
+- [x] **ABC 083 B - Some Sums** (数値の桁処理)
+- [x] **ABC 087 B - Coins** (三重ループ)
 
 ### 1.2 配列・文字列の基本操作
 
@@ -18,10 +20,10 @@
 
 #### AtCoder 練習問題
 
-- [ ] **ABC 085 B - Kagami Mochi** (重複除去)
-- [ ] **ABC 088 B - Card Game for Two** (ソート)
-- [ ] **ABC 049 C - 白昼夢** (文字列のパターンマッチング)
-- [ ] **ABC 086 C - Traveling** (条件判定)
+- [x] **ABC 085 B - Kagami Mochi** (重複除去)
+- [x] **ABC 088 B - Card Game for Two** (ソート)
+- [x] **ABC 049 C - 白昼夢** (文字列のパターンマッチング)
+- [x] **ABC 086 C - Traveling** (条件判定)
 - [ ] **ABC 095 C - Half and Half** (全探索)
 
 ---
