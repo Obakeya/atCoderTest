@@ -71,6 +71,41 @@ function imosMethod(N: number, ranges: [number, number][]): number[] {
 
 愚直に区間加算すると O(NM)、imos 法なら O(N+M) に改善される。
 
+### 累積和(Prefix Sum)
+
+「区間の合計値を高速に求める」アルゴリズム
+考え方：事前に「位置 0 から i 番目までの累計」をすべて計算しておく。任意の区間（1,r）の合計は
+「prefixSum[r]- prefixSUm[l]」の引き算 1 回で求められる。
+
+```typescript
+function buildPrefixSum(S: string): number[] {
+  const N = S.length
+  const prefixSum = new Array(N + 1).fill(0) // N+1 サイズの配列
+
+  let beforeChar = ''
+  let nowCount = 0
+
+  for (let i = 0; i < N; i++) {
+    // 条件判定（例：AC パターンの検出）
+    if (beforeChar === 'A' && S[i] === 'C') {
+      nowCount += 1
+    }
+
+    prefixSum[i + 1] = nowCount // i+1番目に「0からi番目まで」の累計を保存
+    beforeChar = S[i]
+  }
+
+  return prefixSum
+}
+
+// 区間[l,r)の AC 個数を O(1)で取得
+function getCount(prefixSum: number[], l: number, r: number): number {
+  return prefixSum[r] - prefixSum[l]
+}
+```
+
+愚直な区間クエリだと O(Q\*N)、累積和なら前処理 O(N) + 各クエリ O(1)=O(N+Q)に改善される。
+
 #### imos 法 の具体的なメカニズムの説明
 
 利用例を用いて説明する例えば、問題
