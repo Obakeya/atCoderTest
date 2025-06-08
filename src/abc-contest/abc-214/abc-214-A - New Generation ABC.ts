@@ -1,12 +1,19 @@
 export function solve (input: string) {
-  const lines = input.trim().split('\n')
-  /**　ロジックの実装 */
-  console.log('')
+  const N = +input.trim()
+  if (N <= 125) {
+    console.log(4)
+  } else if (126 <= N && N <= 211) {
+    console.log(6)
+  } else {
+    console.log(8)
+  }
 }
 
 // テスト環境の場合
 if (process.env.NODE_ENV === 'test') {
-  const testInput = ``
+  const testInput = `126
+
+`
   console.log('===== テスト =====')
   console.log(testInput)
   console.log('===== 結果 =====')

@@ -23,7 +23,7 @@ Claude Opus 4 の deep research 機能を使い、作成した学習ロードマ
 
 #### 学習問題
 
-- [ ] [ABC214 A - The Number of ABC Problems](https://atcoder.jp/contests/abc214/tasks/abc214_a) - O(1)の理解
+- [x] [ABC214 A - The Number of ABC Problems](https://atcoder.jp/contests/abc214/tasks/abc214_a) - O(1)の理解
 - [ ] [ABC185 B - Smartphone Addiction](https://atcoder.jp/contests/abc185/tasks/abc185_b) - O(n)シミュレーション
 - [ ] [ABC132 C - Divide the Problems](https://atcoder.jp/contests/abc132/tasks/abc132_c) - O(n log n)ソート
 - [ ] [ABC146 C - Buy an Integer](https://atcoder.jp/contests/abc146/tasks/abc146_c) - O(log n)二分探索
@@ -176,13 +176,3 @@ Claude Opus 4 の deep research 機能を使い、作成した学習ロードマ
 - **トレードオフの議論**: 複数の解法がある場合、それぞれの長所短所を説明
 - **実装の改善**: 最初の実装後、より効率的な方法がないか検討
 - **エラーハンドリング**: 境界値や異常系の考慮
-
-### 学習時間の目安
-
-- **Phase 1（必須基礎）**: 2-3 週間（1 日 2-3 問、最重要）
-- **Phase 2（実務重要）**: 3-4 週間（1 日 2 問）
-- **Phase 3（応用）**: 3-4 週間（1 日 1-2 問）
-- **Phase 4（発展）**: 2-3 週間（1 日 1 問、余裕があれば）
-- **総復習**: 1-2 週間
-
-このロードマップにより、SaaS 開発の実務で必要な技術を優先的に習得し、効率的に転職準備を進めることができます。
