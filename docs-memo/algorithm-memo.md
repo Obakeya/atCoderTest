@@ -41,6 +41,62 @@ N = 1000 の配列での探索：
 よって
 k = log2(N)
 
+#### 二分境界探索
+
+「ソート済み配列で条件の境界位置を効率的に見つける」アルゴリズム
+考え方：探索範囲を段階的に狭めて 1 点に収束させる。条件を満たす領域と満たさない領域の境界線を特定する。
+
+**通常の二分探索との違い：**
+
+- 目的：特定の値を見つける → 境界位置を見つける
+- 終了：値が見つかった時点 → 範囲が 1 点に収束
+- 更新：`right = mid - 1` → `right = mid`（境界候補を保持）
+- 条件：`while (left <= right)` → `while (left < right)`
+
+```typescript
+// target未満の要素数を返す
+function binarySearchLess(arr: number[], target: number): number {
+  let left = 0
+  let right = arr.length // 配列外も考慮
+
+  while (left < right) {
+    // 等号なしで1点収束
+    const mid = Math.floor((left + right) / 2)
+    if (arr[mid] < target) {
+      left = mid + 1
+    } else {
+      right = mid // 境界候補を保持
+    }
+  }
+  return left // 境界位置=個数
+}
+
+// target超過の要素数を返す
+function binarySearchGreater(arr: number[], target: number): number {
+  let left = 0
+  let right = arr.length
+
+  while (left < right) {
+    const mid = Math.floor((left + right) / 2)
+    if (arr[mid] <= target) {
+      left = mid + 1
+    } else {
+      right = mid
+    }
+  }
+  return arr.length - left // 配列長から引く
+}
+```
+
+**主な応用：**
+
+- 配列内で条件を満たす要素の個数を求める
+- `A < B < C`の組み合わせ数（B を固定して境界探索）
+- 範囲クエリの効率化
+
+計算量は通常の二分探索と同じ O(log N)。
+境界を「見つける」のではなく「作り出す」アルゴリズムとも言える。最終的に`left`が境界位置を表し、これを使って目的の個数や位置を計算する。
+
 ### imos 法
 
 「区間に対する一律加算を高速化する」アルゴリズム  

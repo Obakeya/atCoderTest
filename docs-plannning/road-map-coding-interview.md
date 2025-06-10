@@ -49,7 +49,7 @@ Claude Opus 4 の deep research 機能を使い、作成した学習ロードマ
 
 - [ ] [ABC132 B - Ordinary Number](https://atcoder.jp/contests/abc132/tasks/abc132_b) - ソートと線形探索
 - [ ] [ABC191 B - Remove It](https://atcoder.jp/contests/abc191/tasks/abc191_b) - 条件付き要素探索
-- [ ] [ABC077 C - Snuke Festival](https://atcoder.jp/contests/abc077/tasks/abc077_c) - ソート + 二分探索
+- [x] [ABC077 C - Snuke Festival](https://atcoder.jp/contests/abc077/tasks/abc077_c) - 二分境界探索
 - [ ] [ABC023 D - 射撃王](https://atcoder.jp/contests/abc023/tasks/abc023_d) - 答えで二分探索
 
 ---
