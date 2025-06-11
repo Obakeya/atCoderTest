@@ -57,8 +57,8 @@ Claude4 sonnet、Opus を作って作成。比較的業務に近い概念につ�
 
 #### 学習問題
 
-- [ ] [ABC122 B - ATCoder](https://atcoder.jp/contests/abc122/tasks/abc122_b) - 文字列検証
-- [ ] [ABC158 C - Tax Increase](https://atcoder.jp/contests/abc158/tasks/abc158_c) - 全探索、逆算
+- [x] [ABC122 B - ATCoder](https://atcoder.jp/contests/abc122/tasks/abc122_b) - 文字列検証
+- [x] [ABC158 C - Tax Increase](https://atcoder.jp/contests/abc158/tasks/abc158_c) - 全探索、逆算
 - [ ] [ABC076 C - Dubious Document](https://atcoder.jp/contests/abc076/tasks/abc076_c) - パターンマッチング
 
 ### 5. BFS/DFS の基礎
