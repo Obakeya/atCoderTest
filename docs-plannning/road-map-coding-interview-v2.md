@@ -45,7 +45,7 @@ Claude4 sonnet、Opus を作って作成。比較的業務に近い概念につ�
 
 - [x] [ABC088 B - Card Game for Two](https://atcoder.jp/contests/abc088/tasks/abc088_b) - ソート、グリーディ法
 - [x] [ABC086 C - Traveling](https://atcoder.jp/contests/abc086/tasks/abc086_c) - 制約条件分析
-- [ ] [ABC061 C - Big Array](https://atcoder.jp/contests/abc061/tasks/abc061_c) - K 番目要素の検索
+- [x] [ABC061 C - Big Array](https://atcoder.jp/contests/abc061/tasks/abc061_c) - ソートと貪欲法での探索
 
 ---
 
