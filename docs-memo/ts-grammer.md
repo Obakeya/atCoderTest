@@ -15,8 +15,6 @@ const numbers = [10, 5, 8, 3]
 console.log(Math.min(...numbers)) // 3
 ```
 
-差ぢだいとぉ
-
 ### 余りを求めたいときはモジュロ演算子を使う
 
 モジュロ演算子(%)は、割り算の余りを求める演算子。
@@ -286,6 +284,33 @@ const receiptView = new ReceiptView(allReceipts, 1000, 11000) // 16 バイト
 // slice()なら 40MB の新しい配列作成が必要
 // ビューなら 16 バイトで同等の操作が可能
 ```
+
+文字列の配列を 1 つの文字列にする
+文字列配列の結合において、パフォーマンス的に最も効率的なのは**Array.prototype.join()メソッド**です。
+理由と最適化のポイント
+join()メソッドが最高効率な理由：
+
+ネイティブ実装: C++レベルで最適化されており、JavaScript ループより圧倒的に高速
+メモリ効率: 結合前に必要なメモリサイズを事前計算し、一度に確保
+中間オブジェクト不要: 文字列連結で発生する中間文字列オブジェクトを作らない
+
+コード例
+
+```typescript
+// 基本的な結合
+const receiptNumbers = ['RCP001', 'RCP002', 'RCP003']
+const combined = receiptNumbers.join('') // "RCP001RCP002RCP003"
+
+// 区切り文字付きの結合
+const csvContent = receiptData.map(r => `${r.amount},${r.account}`).join('\n')
+```
+
+パフォーマンス比較（1000 要素での測定）
+
+join(""): 最速（基準）
+reduce((a,b) => a + b): 約 3-5 倍遅い
+for ループでの+=: 約 5-10 倍遅い
+concat()の連続使用: 約 10-20 倍遅い
 
 # キー付きコレクション系操作
 
