@@ -87,6 +87,55 @@ console.log(5 ** 2) // 25 (5 の 2 乗)
 console.log(10 \*\* 4) // 10000 (10 の 4 乗)
 ```
 
+### 大きな桁の数値の計算を行う
+
+JavaScript の Number 型は 2⁵³-1 (約 9×10¹⁵) までしか正確に表現できない。
+競技プログラミングでは答えが 10¹⁸ を超える場合があるため、BigInt を使用する。
+
+```typescript
+// 基本的な使い方
+let bigNumber = 0n // BigInt リテラル（末尾にn）
+let converted = BigInt(123) // Number からの変換
+
+// 四則演算
+let result = 123n + 456n // 579n
+let product = 999999999999999999n * 888888888888888888n
+```
+
+**型の注意点：number と bigint は混在できない**
+
+```typescript
+let sum = 0n // BigInt
+let nums = [1, 2, 3] // number[]
+
+// ❌ エラー：型が合わない
+answer += sum * nums[i]
+
+// ✅ 正しい：BigInt に変換
+answer += sum * BigInt(nums[i])
+```
+
+**AtCoder での典型的な使用例**
+
+```typescript
+// 累積和やDPで答えが大きくなる問題
+let answer = 0n
+let sum = 0n
+
+for (let i = 0; i < n; i++) {
+  answer += sum * BigInt(nums[i])
+  sum += BigInt(nums[i])
+}
+
+console.log(answer.toString()) // 出力時は文字列化
+```
+
+計算量が多い場合でも、BigInt の演算速度は実用的なレベル。
+
+```
+
+```
+
 # 文字列系操作
 
 ## 文字列型への操作
