@@ -34,3 +34,37 @@ const nextelement = array[index]
 - 時間計算：24 時間、7 曜日、12 か月
 - 配列ローテーション：末尾の次は先頭
 - 周期パターン：繰り返し処理
+
+### オフセットによる仮想的操作
+
+実際のデータ移動を行わず、アクセス時の計算でデータの位置関係を変更する手法（ABC 410 D など）
+
+```typescript
+// 配列回転のオフセットパターン
+const array = [1, 2, 3, 4, 5]
+let offset = 0
+
+// 右回転操作：実際の配列は変更せず、offsetのみ更新
+function rotate(k: number) {
+  offset = (offset + k) % array.length // O(1)で完了
+}
+
+// アクセス時に実際の位置を計算
+function getValue(logicalIndex: number): number {
+  const actualIndex = (logicalIndex + offset) % array.length
+  return array[actualIndex]
+}
+
+// 設定時も同様
+function setValue(logicalIndex: number, value: number) {
+  const actualIndex = (logicalIndex + offset) % array.length
+  array[actualIndex] = value
+}
+```
+
+よくある用途
+
+配列回転：O(N)操作を O(1)に高速化
+循環バッファ：先頭位置の管理
+座標変換：基準点のずらし
+区間操作：範囲の仮想的移動

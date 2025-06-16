@@ -312,6 +312,59 @@ reduce((a,b) => a + b): 約 3-5 倍遅い
 for ループでの+=: 約 5-10 倍遅い
 concat()の連続使用: 約 10-20 倍遅い
 
+## N 個の要素を持つ、連番の値となる配列を作成したい場合
+
+```typescript
+const numbers = Array.from({ length: 10 }, (\_, i) => i + 1);
+
+// N = 5のとき、 array = [1, 2, 3 ,4, 5]
+```
+
+Array.from は「配列のようなオブジェクト」から実際の配列を作成するメソッドです。第二引数にマップ関数を渡すことで、作成と同時に各要素を変換できます。
+
+第一引数：{ length: N } の意味
+{ length: N } は「length プロパティを持つオブジェクト」です。JavaScript では、length プロパティがあれば配列のようなオブジェクト（Array-like）として扱えます。これにより、長さ N の空の配列スロットが作られます。
+
+第二引数：マップ関数の動作
+(\_, i) => i + 1 は各スロットに対して実行される関数です：
+
+\_：現在の要素の値（今回は使わないのでアンダースコアで無視）
+i：現在のインデックス（0 から始まる）
+戻り値：i + 1（1 から始まる連番）
+
+### Array-like オブジェクト
+
+JavaScript では`length`プロパティを持つオブジェクトを「配列のようなオブジェクト」として扱えます。DOM 操作や一部のライブラリで頻繁に遭遇しますが、配列メソッドは直接使用できないため配列への変換が必要です。
+
+**主な遭遇場面**
+
+- DOM 要素の取得：`querySelectorAll()`、`getElementsByClassName()`
+- 関数の引数：`arguments`オブジェクト（ES5 時代）
+- 外部ライブラリ：jQuery オブジェクトなど
+
+**配列への変換方法**
+
+```typescript
+// DOM要素の一括処理例
+const buttons = document.querySelectorAll('.receipt-button') // NodeList（Array-like）
+
+// 方法1：Array.from()
+const buttonArray1 = Array.from(buttons)
+
+// 方法2：スプレッド構文（モダン）
+const buttonArray2 = [...buttons]
+
+// 方法3：for...of（変換不要）
+for (const button of buttons) {
+  button.addEventListener('click', handleReceiptClick)
+}
+
+// 配列メソッドを使用したい場合
+;[...buttons]
+  .filter(btn => !btn.disabled)
+  .forEach(btn => btn.classList.add('processed'))
+```
+
 # キー付きコレクション系操作
 
 ## 2 つの数字を使ってキーにしたこコレクションを利用したい場合
