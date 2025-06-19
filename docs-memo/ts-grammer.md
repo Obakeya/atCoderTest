@@ -414,6 +414,12 @@ for (const button of buttons) {
   .forEach(btn => btn.classList.add('processed'))
 ```
 
+## 長さ N+1 の 1 次元配列を作って、その各要素が空配列になっている構造を用意する
+
+```typescript
+data:number[][] = Array.from({legnth:N +1}, () => [])
+```
+
 # キー付きコレクション系操作
 
 ## 2 つの数字を使ってキーにしたこコレクションを利用したい場合
