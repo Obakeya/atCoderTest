@@ -68,3 +68,60 @@ function setValue(logicalIndex: number, value: number) {
 循環バッファ：先頭位置の管理
 座標変換：基準点のずらし
 区間操作：範囲の仮想的移動
+
+### 二次元配列の回転操作
+
+■ 座標変換の発想
+盤面を「左上原点 (0,0)」で考えると，
+元の座標: (i, j) … i=行, j=列
+を 90° 時計回りすると，
+新しい座標: ( j , N-1-i )
+になる。─── 行と列を入れ替え，列側を左右反転するだけ。
+
+      ┌─────┐      ┌─────┐
+      │(0,0)│ ⇒   │     │(0,N-1)
+      └─────┘      └─────┘
+
+■ 180°・270° は 90° を重ねるだけ
+180° : (i,j) → (N-1-i , N-1-j)
+270° : (i,j) → (N-1-j , i) // ＝反時計回り 90°
+
+■ 実装の型 1. 空配列 res を作る 2. 元配列を二重ループで走査し，変換先へコピー 3. 元配列には手を触れず，新しい配列を返す
+
+```typescript
+;/_ ===== 90° Clockwise ===== _/
+export function rotate90Clockwise(grid: string[][]): string[][] {
+  const N = grid.length
+  const res: string[][] = Array.from({ length: N }, () => Array(N))
+  for (let i = 0; i < N; i++) {
+    for (let j = 0; j < N; j++) {
+      res[j][N - 1 - i] = grid[i][j]
+    }
+  }
+  return res
+}
+
+;/_ ===== 180° ===== _/
+export function rotate180(grid: string[][]): string[][] {
+  const N = grid.length
+  const res: string[][] = Array.from({ length: N }, () => Array(N))
+  for (let i = 0; i < N; i++) {
+    for (let j = 0; j < N; j++) {
+      res[N - 1 - i][N - 1 - j] = grid[i][j]
+    }
+  }
+  return res
+}
+
+;/_ ===== 270° Clockwise (＝ 90° Counter-clockwise) ===== _/
+export function rotate270Clockwise(grid: string[][]): string[][] {
+  const N = grid.length
+  const res: string[][] = Array.from({ length: N }, () => Array(N))
+  for (let i = 0; i < N; i++) {
+    for (let j = 0; j < N; j++) {
+      res[N - 1 - j][i] = grid[i][j]
+    }
+  }
+  return res
+}
+```

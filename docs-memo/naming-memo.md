@@ -14,6 +14,7 @@
 - 辺（三角形）...side
 - ノードにおける次数の集合...degreeList
 - 次数（ノードからつながるノードの数を示す）...degree
+- 二次元配列... two-dimensional array , 2D array
 
 ### 問題に登場する概念に対する命名
 
