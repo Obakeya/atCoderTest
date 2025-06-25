@@ -420,6 +420,40 @@ for (const button of buttons) {
 data:number[][] = Array.from({legnth:N +1}, () => [])
 ```
 
+## 配列に対して、置き換えや挿入を行う場合
+
+配列委大して、要素の削除・挿入・置き換えを行いたい場合、splice()メソッドを使う。
+
+```typescript
+
+array.splice(start, deleteCount, item1?, item2?, ....)
+```
+
+`start` ...操作を開始する位置（インデックス、0 始まり）
+`deleteCount`...その位置から削除する要素の数（0 にすれば削除無し）
+`item1, item2` 削除した位置に挿入する位置
+
+要素を削除する
+
+```typescript
+const arr = ['a', 'b', 'c', 'd']
+arr.splice(1, 2) // index =1から2つ削除する→['a', 'd']
+```
+
+要素を挿入する
+
+```typescript
+const arr = ['a', 'd']
+arr.splice(1, 0, 'b', 'c') // index = 1 に 'b','c'を挿入→['a', 'b', 'c', 'd']
+```
+
+要素を置き換える
+
+```typescript
+const arr = ['a', 'x', 'y', 'd']
+arr.splice(1, 2, 'b', 'c') // index=1から2つ削除→'b','c' を挿入　→ 'a','b','c','d
+```
+
 # キー付きコレクション系操作
 
 ## 2 つの数字を使ってキーにしたこコレクションを利用したい場合

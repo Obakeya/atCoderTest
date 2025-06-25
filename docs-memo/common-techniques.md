@@ -125,3 +125,21 @@ export function rotate270Clockwise(grid: string[][]): string[][] {
   return res
 }
 ```
+
+逆順シュミレーション
+
+「最終状態だけが欲しい」操作列では、前向きシミュレーションより 後ろから辿るほうが速い ことが多い。ポイントは次の 3 ステップだけ。
+
+注目対象 cur を 1 変数で持つ例: 0=サーバー, 1‥N=各 PC。
+
+クエリを末尾 → 先頭へ走査
+
+1 p (PC→Server): cur==p なら cur=0 へ切替。
+
+3 p (Server→PC): cur==0 なら cur=p へ切替。
+
+2 p s (PC に追加): cur==p なら buf.push(reverse(s))。
+
+バッファを最後に 1 度だけ反転 answer = reverse(buf.join("")) – コピーは合計長さ分だけ。
+
+この形に落とし込めば計算量は O(Q + Σ|s|)、余計な PC 状態は一切持たない。ABC411 D など、コピーと追加が混じる問題でよく刺さるテクニック。
