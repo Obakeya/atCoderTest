@@ -91,6 +91,7 @@ console.log(10 \*\* 4) // 10000 (10 の 4 乗)
 
 JavaScript の Number 型は 2⁵³-1 (約 9×10¹⁵) までしか正確に表現できない。
 競技プログラミングでは答えが 10¹⁸ を超える場合があるため、BigInt を使用する。
+具体的には 155 640 513 381 884 866 を超える、つまり 16 桁を超える演算の場合は BigInt を利用すること。
 
 ```typescript
 // 基本的な使い方
@@ -100,6 +101,11 @@ let converted = BigInt(123) // Number からの変換
 // 四則演算
 let result = 123n + 456n // 579n
 let product = 999999999999999999n * 888888888888888888n
+
+//積を求める時の注意。下記だと、正しい数字で求めることができない
+let result2 = BigInt(targetA * targetB)
+//正しくは、計算前からBigIntに変換すること
+let result3 = BigInt(targetA) * BigInt(targetB)
 ```
 
 **型の注意点：number と bigint は混在できない**

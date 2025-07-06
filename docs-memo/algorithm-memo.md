@@ -237,3 +237,60 @@ function kadane(arr: number[]): number {
   時間 O(N)/追加メモリ O(1)
 - 使える場面
   「連続区間でスコア最大化」「利益最大の売買機関」「± で評価した文字列の最適かたまり」など。
+
+### ランレングス圧縮（Run-Length Encoding:RLE）
+
+連続する同一値を **(個数, 値)** のペアにまとめて列を表す圧縮法。
+
+- メモリ削減：元の長さではなく「区間数」に比例したサイズで保持
+- オンライン更新に強い：末尾への追加はペアを push するだけ、先頭からの削除も先頭ペアを「食べる」だけで O(1)
+- 部分展開が容易：必要な要素数だけペアを分割して取り出せるため、大規模列でも高速に処理ができる
+
+どんな問題で活躍するか
+
+- 同値が大量に並ぶ列を順次更新する
+- 同一文字が続く文字列処理
+- ビット・符号列の圧縮処理
+- 時間軸イベントの集約処理
+
+コード例について
+
+```typescript
+/**
+ * Run-Length Encoding (RLE) - 典型的実装
+ *
+ * 1) runLengthEncode: 連続する同一値を(count, value)のペア列に圧縮
+ * 2) runLengthDecode: ペア列を展開して元の配列に戻す
+ *
+ * ジェネリック Tを使っているので数値・文字列どちらでも利用可
+ *
+ * */
+export function runLengthEncode<T>(array: T[]): Array<[number, T]> {
+  const result: Array<[number, t]> = []
+  if (array.length === 0) return result
+
+  let previous = array[0]
+  let count = 1
+
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] === perv) count++
+    else {
+      //値が切り替わるタイミングで、ペア配列にpush
+      result.push([count, prev])
+      prev = arr[i]
+      count = 1 //違う値が見つかったら、countをもとに戻す
+    }
+  }
+  result.push([count, previous])
+  return result
+}
+
+/*　デコード */
+export function runLengthDecode<T>(pairs: Array<[number, T]>): T[] {
+  const result: T[] = []
+  for (const [count, value]) of pairs) {
+    for (let i =0; i < count; i++) result.push(value)
+  }
+return result
+}
+```
