@@ -46,6 +46,8 @@ Math.abs(x - xi)
 Math.floor(value) //切り捨て
 
 Math.ceil(value) //切り上げ
+//使用例
+const halfLen = Math.ceil(originalLength) //回文を作成するために必要な、半分の文字数を定義する
 
 Math.round(value) //四捨五入
 ```
@@ -138,9 +140,19 @@ console.log(answer.toString()) // 出力時は文字列化
 
 計算量が多い場合でも、BigInt の演算速度は実用的なレベル。
 
+### N 進数に変換する
+
+`toString()` を利用する
+
+```typescript
+const radix = 2 // 変換したいN進数
+const changed = base.toString(radix)
+
+///9 * 10 ^ 18 まで膨らむ和や積が必要なら、BigIntを用いる
+const safeChanged = BigInt(base).toString(radix)
 ```
 
-```
+````
 
 # 文字列系操作
 
@@ -245,12 +257,33 @@ str.slice(-5) // 'ript!'
 // 末尾から数えて12文字目から、末尾から数えて7文字
 str.slice(-12, -7) // ' TypeSc'
 
-// 先頭から5文字目まで、末尾から数えて1文字目を除く
+// 末尾を取り除く
 str.slice(0, -1) // 'Hello, TypeScript'
+
+  //回文作成の利用例
+  let palStri: string
+  if(len % 2 ===0) {
+    palStr = halfStr + halfStr.spli('').reverse().join('')
+  } else {
+    palStr = halfStr + halfStr.slice(0,-1).split('').revese().join('') //回文作成時に、　12321を作りたいときに、 123321とならないように、12321とする。
+  }
+
+
 
 // 末尾の5文字を削除
 str.slice(0,-5) // 'Hello, TypeSc'
 
+```
+
+### 文字列を逆順にする
+
+JavaScript には文字列を直接逆順にするメソッドが無いため、配列メソッドを活用します。文字列を一度配列に変換し、配列の`reverse()`メソッドを使って逆順にしてから、 `join()`を利用して再び文字列に戻すのが基本。
+
+```typescript
+const originalText = 'hello'
+
+const reversed = originalText.split('').reverse().join('')
+// 'olleh'
 ```
 
 ## 数値型への操作

@@ -21,3 +21,5 @@
 - 移動...move
 
 - キューの先頭を指し示す index
+
+- 回文...palindrome

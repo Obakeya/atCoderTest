@@ -143,3 +143,19 @@ export function rotate270Clockwise(grid: string[][]): string[][] {
 バッファを最後に 1 度だけ反転 answer = reverse(buf.join("")) – コピーは合計長さ分だけ。
 
 この形に落とし込めば計算量は O(Q + Σ|s|)、余計な PC 状態は一切持たない。ABC411 D など、コピーと追加が混じる問題でよく刺さるテクニック。
+
+### 桁数ごとの最小値、最大値を求める
+
+特定の桁数の数値を扱う問題が扱われる際に利用する。例えば、「3 桁の数値をすべて調べる」「回文の生成」「桁数制限のある計算」などです。
+
+```typescript
+const halfLen = 3 //求めたい桁数
+
+// halfLenの最小値100と最大値999を計算。1桁の時のみ特別に扱う。0ではなく、1から開始する
+const start = halfLen === 1 ? 1 : 10 ** (halfLen - 1)
+const end = 10 ** halfLen - 1
+
+for (let i = start; i <= end; i++) {
+  // 3桁の数値をすべて処理
+}
+```
