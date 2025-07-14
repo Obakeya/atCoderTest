@@ -11,8 +11,9 @@
 
 - 桁...digit
 - 座標...position(やや意訳だが)、coordinates
-- 辺（三角形）...side
+- 辺（三角形）...side、edge
 - ノードにおける次数の集合...degreeList
+- 頂点（頂点）...vertex(複数形：vertices) / node
 - 次数（ノードからつながるノードの数を示す）...degree
 - 二次元配列... two-dimensional array , 2D array
 
@@ -23,3 +24,13 @@
 - キューの先頭を指し示す index
 
 - 回文...palindrome
+
+### 省略形の用語
+
+index → idx
+number → num
+count → cnt
+length → len
+temporary → temp
+previous → prev
+current → cur
