@@ -16,6 +16,7 @@
 - 頂点（頂点）...vertex(複数形：vertices) / node
 - 次数（ノードからつながるノードの数を示す）...degree
 - 二次元配列... two-dimensional array , 2D array
+- 数列...Sequence
 
 ### 問題に登場する概念に対する命名
 
