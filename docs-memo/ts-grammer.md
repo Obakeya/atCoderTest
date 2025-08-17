@@ -566,3 +566,15 @@ const notFound = matchingMap.delete('9999-9999') // false（存在しない）
 console.log(matchingMap.has('1001-2001')) // false
 console.log(matchingMap.size) // 1
 ```
+### Mapの値から配列の持ち方に変更する
+````
+
+```ts
+// 入金消込の例
+const receiptMap = new Map<string, Receipt>()
+receiptMap.set('receipt1', { id: 'receipt1', amount: 1000 })
+receiptMap.set('receipt2', { id: 'receipt2', amount: 2000 })
+
+// 値のみを配列として取得
+const receipts = [...receiptMap.values()]
+```
