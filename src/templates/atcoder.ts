@@ -1,3 +1,4 @@
+/**　問題メモ */
 export function solve (input: string) {
   const lines = input.trim().split('\n')
   /**　ロジックの実装 */
