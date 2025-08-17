@@ -17,6 +17,8 @@
 - 次数（ノードからつながるノードの数を示す）...degree
 - 二次元配列... two-dimensional array , 2D array
 - 数列...Sequence
+- 直径...diameter
+- 半径...radius
 
 ### 問題に登場する概念に対する命名
 
@@ -25,6 +27,10 @@
 - キューの先頭を指し示す index
 
 - 回文...palindrome
+
+### 形容詞
+
+- 最も遠い...farthest
 
 ### 省略形の用語
 

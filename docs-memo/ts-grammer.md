@@ -152,8 +152,6 @@ const changed = base.toString(radix)
 const safeChanged = BigInt(base).toString(radix)
 ```
 
-````
-
 # 文字列系操作
 
 ## 文字列型への操作
@@ -493,6 +491,32 @@ const arr = ['a', 'x', 'y', 'd']
 arr.splice(1, 2, 'b', 'c') // index=1から2つ削除→'b','c' を挿入　→ 'a','b','c','d
 ```
 
+## 配列の差異ごとの値を削除する
+
+`pop()`は配列の最後の要素を削除し、その削除した要素を返す
+
+```ts
+const stack = [10, 20, 30]
+
+console.log(stack.pop()) // 30が返される
+console.log(stack) // [10, 20] 最後の要素が削除されている
+```
+
+`pop()`の特徴
+
+- 破壊的メソッド：元の配列を変更する
+- 空配列の場合：`undefined`を返す
+- LIFO: Last In, First Out （後入れ先出し）の動作を実現する
+
+## 数字の配列の中から、最大値を持つ要素のインデックスを取得する
+
+```ts
+// 開始点からの距離が都市ごと(indexごと)に格納されている数字配列を返す
+const distFromZero = dfs(0)
+const maxDistance = Math.max(...distFromZero)
+const farthesVerexIndex = disftFromZero.indexOf(maxDistance)
+```
+
 # キー付きコレクション系操作
 
 ## 2 つの数字を使ってキーにしたこコレクションを利用したい場合
@@ -566,8 +590,8 @@ const notFound = matchingMap.delete('9999-9999') // false（存在しない）
 console.log(matchingMap.has('1001-2001')) // false
 console.log(matchingMap.size) // 1
 ```
-### Mapの値から配列の持ち方に変更する
-````
+
+## Map の値から配列の持ち方に変更する
 
 ```ts
 // 入金消込の例
