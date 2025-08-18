@@ -8,22 +8,23 @@
 「ソート済み配列から目的の値を効率的に見つける」アルゴリズム
 考え方：毎回探索範囲を半分に絞り込む。真ん中の値と比較して、目的の値がどちら側にあるかを判断し、該当しない半分を捨てる。
 
-応用：「答えで二分探索」...答えの候補範囲で二分探索し、「その値が達成可能か？」を判定関数で確認する。判定可能なら上を、不可能なら下を探索。
+応用：「答えで二分探索」...答えの候補範囲で二分探索し、「その値が達成可能か？」を判定関数で確認する。判定可能なら上を、不可能なら下を探索。発見した index を返す。
 
 ```typescript
-function binarySearch(arr:number[], target:number) : number{
-    let left = - 0;
-    let right = arr.length - 1;
+function binarySearch(arr: number[], target: number): number {
+  let left = 0
+  let right = arr.length - 1
 
-    while (left <= right){
-        const mid = Math.floor((left + right)/2)
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2)
 
-        if(arr[mid] === target) return mid;
-        else if (arr[mid] < target> left = mid + 1)
-        else right = mid - 1;
-    }
+    if (arr[mid] === target) return mid
+    else if (arr[mid] < target) left = mid + 1
+    else right = mid - 1
+  }
+
+  return -1 // 見つからなかった場合
 }
-
 ```
 
 「最小値を最大化してください」という問題では二分探索が有効であることが多い。  
@@ -96,6 +97,28 @@ function binarySearchGreater(arr: number[], target: number): number {
 
 計算量は通常の二分探索と同じ O(log N)。
 境界を「見つける」のではなく「作り出す」アルゴリズムとも言える。最終的に`left`が境界位置を表し、これを使って目的の個数や位置を計算する。
+
+指定した値以上の最小値の位置を必ず返す（挿入位置を求める）関数
+
+```ts
+function bisectLeft(arr: number[], target: number): number {
+  let left = 0
+  let right = arr.length
+
+  while (left < right) {
+    const mid = Math.floor((left + right) / 2)
+
+    if (arr[mid] < target) {
+      left = mid + 1
+    } else {
+      right = mid
+    }
+  }
+  return left // 常に有効な位置
+}
+```
+
+bisect...二等分するという意味
 
 ### imos 法
 
