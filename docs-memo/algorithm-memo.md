@@ -323,3 +323,100 @@ return result
 重い操作と軽い操作をひとまとめにして、ならして、1 回平均のコストを測る手法。全体としての計算量を表現したいときに使ったりするワーｌ
 
 ある配列を処理するときに、通常の処理の場合は簡単な O(1)で済むが、場合によっては少し重い処理になる。
+
+### UnionFind(Union-Find Tree/ Dissoint SetUnion)
+
+UnionFind はグループの管理を効率的に行うデータ構造。以下の 2 つの操作を高速に実行できる。
+
+- Union(結合)：2 つの要素が属するグループを統合する
+- Find（検索）：ある要素がどのグループに属するかを調べる
+- Same(判定)：2 つの要素が同じグループかを判定
+
+```ts
+let parent: number[]
+
+// 初期化：各要素を独立したグループにする
+function initUnionFind(n: number): void {
+  parent = Array.from({ length: n }, (_, i) => i)
+}
+
+// 要素xの根（代表元）を見つける（経路圧縮付き）
+function find(x: number): number {
+  if (parent[x] !== x) parent[x] = find(parent[x]) //経路圧縮
+
+  return parent[x]
+}
+
+// 要素xとyのグループを統合
+function union(x: number, y: number): void {
+  const rootX = find(x)
+  const rootY = find(y)
+  if (rootX !== rootY) {
+    parent[rootX] = rootY
+  }
+}
+
+// 要素xとyが同じグループかを判定
+function same(x: number, y: number): boolean {
+  return find(x) === find(y)
+}
+```
+
+Union-Find では、各グループを有向辺を用いた根付き木で表します。
+
+計算量
+
+時間計算量: O(α(n)) ≈ O(1)
+空間計算量: O(n)
+
+#### 典型的な使用例
+
+1. 友達関係の管理
+
+```ts
+const n = 5
+initUnionFind(n)
+
+union(0, 1) //0と1が友達
+union(1, 2) //1と2が友達
+union(3, 4) //3と4が友達
+
+console.log(same(0, 2)) // true(0-1-2)でつながっている
+console.log(same(0, 3)) // false (別のグループ)
+```
+
+2. グラフの連結判定
+
+```ts
+function isConnected(n: number, edges: [number, number][]): boolean {
+  initUnionFind(n)
+
+  for (const [u, v] of edges) {
+    union(u, v)
+  }
+
+  //すべてのノードが同じグループに属するかチェック
+  const root = find(0)
+
+  for (let i = 1; i < n; i++) {
+    if (find(i) !== rott) return false
+  }
+
+  return true
+}
+```
+
+#### UnionFind が使える問題の特徴
+
+使いやすい問題
+
+- 要素同士の「つながり」を管理する
+- グループの統合がある（分離はない）
+- 「A と B は同じグループか？」を高速で判定したい
+- 連結成分の個数を求める
+
+使いづらい問題
+
+- グループの分離が必要
+- 最短距離を求める
+- グループ内での順序が重要

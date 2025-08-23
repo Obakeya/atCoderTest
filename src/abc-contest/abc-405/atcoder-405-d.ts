@@ -36,7 +36,7 @@ export function solve (input: string) {
     for (let k = 0; k < 4; k++) {
       const nx = x + dx[k]
       const ny = y + dy[k]
-      // 探索阿智商がグリッドの外にはみ出していないか確認
+      // 探索地点がグリッドの外にはみ出していないか確認
       if (nx < 0 || nx >= H || ny < 0 || ny >= W) continue
       // 探索先が通行不可（壁など）はまたすでに訪問済みでないか確認
       if (grid[nx][ny] !== '.' || dist[nx][ny] !== -1) continue

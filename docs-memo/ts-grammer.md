@@ -517,6 +517,12 @@ const maxDistance = Math.max(...distFromZero)
 const farthesVerexIndex = disftFromZero.indexOf(maxDistance)
 ```
 
+## H 行 W 列の二次元配列を用意する簡潔な書き方
+
+```ts
+const arr = Array.from({ length: H }, () => Array(W).fill(false))
+```
+
 # キー付きコレクション系操作
 
 ## 2 つの数字を使ってキーにしたこコレクションを利用したい場合
