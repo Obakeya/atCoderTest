@@ -1,8 +1,12 @@
 /**　問題メモ */
 export function solve (input: string) {
   const lines = input.trim().split('\n')
+
+  const ans = []
+
   /**　ロジックの実装 */
-  console.log('')
+
+  console.log(ans.join('\n'))
 }
 
 // テスト環境の場合
