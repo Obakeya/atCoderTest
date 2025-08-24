@@ -1,6 +1,7 @@
 /**　問題メモ */
 export function solve (input: string) {
   const lines = input.trim().split('\n')
+  const N = +lines[0]
 
   const ans = []
 
