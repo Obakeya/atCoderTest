@@ -42,6 +42,8 @@ Math.abs(x - xi)
 
 ### 小数点処理の文法について
 
+#### 端数処理
+
 ```typescript
 Math.floor(value) //切り捨て
 
@@ -50,6 +52,20 @@ Math.ceil(value) //切り上げ
 const halfLen = Math.ceil(originalLength) //回文を作成するために必要な、半分の文字数を定義する
 
 Math.round(value) //四捨五入
+```
+
+#### 特定の小数点で四捨五入して、文字列化する
+
+```ts
+const num = 3.14
+const result = num.toFixed(2) // "3.14" ← 文字列
+console.log(typeof result) // "string"
+
+const num = 3.14159
+console.log(num.toFixed(2)) // "3.14" ← 3 番目の 1 が四捨五入
+
+const num = 5
+console.log(num.toFixed(3)) // "5.000" ← 0 が追加
 ```
 
 ### ある小数点を含む可能性がある数字を整数かどうか検証する
@@ -150,6 +166,15 @@ const changed = base.toString(radix)
 
 ///9 * 10 ^ 18 まで膨らむ和や積が必要なら、BigIntを用いる
 const safeChanged = BigInt(base).toString(radix)
+```
+
+### 平方根を求める
+
+`sqrt()`を利用する
+
+```ts
+Math.sqrt(4) //2
+Math.sqrt(9) //3
 ```
 
 # 文字列系操作

@@ -10,3 +10,4 @@
 - 012 Red Painting（★4）: UnionFind,2 次元 →1 次元変換
 - 014 We Used to Singa a Song Together（★3）:ソートして貪欲法
 - 016 Mininum Coins（★3）：式変形によりループを減らしして全探索。余りが 0→ 有効な組という判定
+- 018 Statue of Chokudai（★3）：三角関数（円運動の公式、アークタンジェント（逆正接関数）、ピタゴラスの定理）
