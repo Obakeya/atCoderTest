@@ -9,3 +9,4 @@
 - 010 Score Sum Queries（★2）：累積和、座標同士での引き算
 - 012 Red Painting（★4）: UnionFind,2 次元 →1 次元変換
 - 014 We Used to Singa a Song Together（★3）:ソートして貪欲法
+- 016 Mininum Coins（★3）：式変形によりループを減らしして全探索。余りが 0→ 有効な組という判定
