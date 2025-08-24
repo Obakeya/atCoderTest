@@ -12,7 +12,9 @@ export function solve (input: string) {
 
 // テスト環境の場合
 if (process.env.NODE_ENV === 'test') {
-  const testInput = ``
+  const testInput = `
+123  
+`.trim()
   console.log('===== テスト =====')
   console.log(testInput)
   console.log('===== 結果 =====')
