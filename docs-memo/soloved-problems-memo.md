@@ -11,3 +11,9 @@
 - 014 We Used to Singa a Song Together（★3）:ソートして貪欲法
 - 016 Mininum Coins（★3）：式変形によりループを減らしして全探索。余りが 0→ 有効な組という判定
 - 018 Statue of Chokudai（★3）：三角関数（円運動の公式、アークタンジェント（逆正接関数）、ピタゴラスの定理）
+
+# AtCoder Beginer Contest
+
+- 420
+  - C - Sum of Min QUery：事前の和計算と差分計算
+  - D - Toogle Maze：3 次元 BFS[状態,x,y]、2 次元グリッドでの A→B の最短距離を求める
