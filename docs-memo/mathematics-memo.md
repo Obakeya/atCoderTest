@@ -281,3 +281,32 @@ const kaku = Math.atan2(d2, d1)
 //横の距離 = cx - X、縦の距離 = cy - Y
 const d1 = Math.sqrt((cx - X) ** 2 + (cy - Y) ** 2)
 ```
+
+### ユーグリッドの互除法
+
+ユーグリッドの互除法は、2 つの整数の最大公約数(CGD:Greatest Common Division)を効率的に求めるアルゴリズム。
+
+#### 基本原理
+
+核心となる性質：gcd(a,b) = gcd(b, a %b)
+
+この性質により、大きな数を小さな数で割った余りを使って、問題を段階的に小さくしていくことができる。
+余りが 0 になったとき、その除数が最大公約数となります。
+
+除数...割り算で割る数のこと。
+
+被除数：割られる数
+除数：割る数
+商：割り算の結果
+
+```ts
+function gcd(a: number, b: number): number {
+  while (b !== 0) {
+    ;[a, b] = [b, a % b] //同時代乳でスワップ
+  }
+  return a
+}
+
+console.log(gcd(48, 18))
+console.log(gcd(100, 75))
+```

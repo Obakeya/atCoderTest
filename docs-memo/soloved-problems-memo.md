@@ -12,6 +12,8 @@
 - 016 Mininum Coins（★3）：式変形によりループを減らしして全探索。余りが 0→ 有効な組という判定
 - 018 Statue of Chokudai（★3）：三角関数（円運動の公式、アークタンジェント（逆正接関数）、ピタゴラスの定理）
 - 020 Log Inequality（★3）：小数点を避けて計算する、BigInt を用いる
+- 022 Cubic Cake（★2）：最大公約数 → ユーグリッドの互除法、BigInt
+- 024 Select+/-One（★2）：偶奇性（パリティ）を考える
 
 # AtCoder Beginer Contest
 
