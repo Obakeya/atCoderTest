@@ -14,6 +14,7 @@
 - 020 Log Inequality（★3）：小数点を避けて計算する、BigInt を用いる
 - 022 Cubic Cake（★2）：最大公約数 → ユーグリッドの互除法、BigInt
 - 024 Select+/-One（★2）：偶奇性（パリティ）を考える
+- 026 Independent Set on a Tree（★4）：木 → 二部グラフかつ隣り合わない頂点 → 色塗りによるグループ分け。　隣り合わない N/2 個の頂点 → グループわけが必要。
 
 # AtCoder Beginer Contest
 
