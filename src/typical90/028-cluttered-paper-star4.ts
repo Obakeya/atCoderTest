@@ -41,8 +41,7 @@ export function solve (input: string) {
     }
   }
 
-  // Step 4: 各重なり数の座標をカウント
-  // 存在する座標分、すべてループしていく
+  // Step 4: 各重なり数の座標をカウント ここも座標分のループ
   const answer: number[] = Array(N + 1).fill(0)
   for (let i = 0; i <= 1000; i++) {
     for (let j = 0; j <= 1000; j++) {
