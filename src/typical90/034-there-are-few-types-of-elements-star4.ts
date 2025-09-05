@@ -34,7 +34,7 @@ export function solve (input: string) {
       const leftCount = elementCount.get(leftElement)!
 
       if (leftCount === 1) {
-        distinctCount-- // この要素がなくなる
+        distinctCount-- // 1つしかいないため、この要素がなくなる
         elementCount.delete(leftElement)
       } else {
         elementCount.set(leftElement, leftCount - 1)

@@ -20,6 +20,7 @@
 - 032 AtCoder Ekiden（★3）：順列生成、制約チェック、バックトラッキングの基本実装が行えるかどうか、全探索、隣接リスト
 - 033 Not Too Bright（★2）：境界値用のロジックを用意する。
 - 034 There are few types of elements（★4）:単調性を利用した尺とり法
+- 038 Large LCM（★3）：オーバーフローを避けるために式変形して除算をする。最大公約数から最小公倍数を求める
 
 # AtCoder Beginer Contest
 

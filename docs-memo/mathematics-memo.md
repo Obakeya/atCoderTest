@@ -286,8 +286,6 @@ const d1 = Math.sqrt((cx - X) ** 2 + (cy - Y) ** 2)
 
 ユーグリッドの互除法は、2 つの整数の最大公約数(CGD:Greatest Common Division)を効率的に求めるアルゴリズム。
 
-#### 基本原理
-
 核心となる性質：gcd(a,b) = gcd(b, a %b)
 
 この性質により、大きな数を小さな数で割った余りを使って、問題を段階的に小さくしていくことができる。
@@ -302,14 +300,33 @@ const d1 = Math.sqrt((cx - X) ** 2 + (cy - Y) ** 2)
 ```ts
 function gcd(a: number, b: number): number {
   while (b !== 0) {
-    ;[a, b] = [b, a % b] //同時代乳でスワップ
+    ;[a, b] = [b, a % b] //同時代入でスワップ
   }
   return a
 }
 
 console.log(gcd(48, 18))
 console.log(gcd(100, 75))
+
+///あるいは、下記のようにも掛ける
+function gcd(a: bigint, b: bigint): bigint {
+  if (b === 0n) return a
+  return gcd(b, a % b) // A を gcdで割った数
+}
 ```
+
+最大公約数を求める関数を応用すると、最小公倍数を求めることもできる。  
+最小公倍数...lcm(Leatest Common Multiple)
+
+関係性
+
+```ts
+lcm(A,B) = (A * B) / gcd( A,B)
+lcm(A,B) * gcd(A,B) = A * B
+```
+
+A と B の最小公倍数は、A と B の積を A と B の最大公約数で割った数に等しい。
+A と B の最大公約数の積と A と B の最小公倍数の積は、A と B の積に等しい。
 
 ### 区間記法
 
