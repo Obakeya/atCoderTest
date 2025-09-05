@@ -420,3 +420,63 @@ function isConnected(n: number, edges: [number, number][]): boolean {
 - グループの分離が必要
 - 最短距離を求める
 - グループ内での順序が重要
+
+### 尺とり法について
+
+尺取り法は、配列や数列の連続する部分に対して条件を満たす範囲を効率的に探索するアルゴリズム。
+名前の由来は、尺取り虫が体を伸ばしたり縮めたりしながら移動する様子に似ているから。
+左端と右端の組をすべて試さないようにする。
+
+尺取り法では 2 つのポインタ（左端と右端）を使います：
+
+1. 右端を伸ばす：条件を満たす限り右端を右に移動して範囲を広げる
+2. 左端を縮める：条件を満たさなくなったら左端を右に移動して範囲を狭める
+3. 繰り返し：この操作を配列の終端まで繰り返す
+
+動きとしては、左端も右端も 0（左端）からスタートする。
+右端だけは右にずらしていき、期待する和を超えるまで（超える手前の位置）で要素数をカウント。
+その時の右の位置はキープしつつ、左端だけ右に 1 つずらし、再度計算を始めていく。
+
+#### 尺取り法の基本例
+
+尺取り法の最も基本的な例として、「連続する部分配列の和が K 以下となる最大の長さを求める問題」を示します。
+
+問題設定
+
+正の整数からなる配列で、連続する部分配列の和が K 以下となる部分配列のうち、最も長いものの長さを求める。
+
+```ts
+function maxSubarrayLength(arr: number[], K: number): number {
+  let maxlength = 0
+  let currentSUm = 0
+  let left = 0
+
+  // 左端を0からarr.length -1まで移動
+  for (let right = 0; right < arr.length; right++) {
+    // 右端の要素を範囲に追加
+    currentSum += arr[right]
+
+    // 和がKを超えたら左端を縮めて調整
+    while (currentSum > K && left <= right) {
+      currentSum -= arr[left]
+      left++
+    }
+
+    // 現在の範囲の長さで最大値を更新
+    maxLength = Math.max(maxLength, right - left + 1)
+  }
+  return maxLength
+}
+
+functions testShakutori() {
+  const arr1 = [1,2,3,4,5]
+  const K1 = 7
+  console.log((masSubarrayLenght(arr1,K1)))
+
+
+
+
+}
+
+
+```
