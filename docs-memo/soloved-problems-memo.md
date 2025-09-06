@@ -25,6 +25,10 @@
 
 # AtCoder Beginer Contest
 
+- 293
+
+  - C - Make Takahashi Happy：後戻り方向のない移動なので DFS ではなく、バックトラッキング。二次元座標での x,y の取り違え注意
+
 - 420
   - C - Sum of Min QUery：事前の和計算と差分計算
   - D - Toogle Maze：3 次元 BFS[状態,x,y]、2 次元グリッドでの A→B の最短距離を求める
