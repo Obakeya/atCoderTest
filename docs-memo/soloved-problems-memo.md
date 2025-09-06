@@ -21,6 +21,7 @@
 - 033 Not Too Bright（★2）：境界値用のロジックを用意する。
 - 034 There are few types of elements（★4）:単調性を利用した尺とり法
 - 038 Large LCM（★3）：オーバーフローを避けるために式変形して除算をする。最大公約数から最小公倍数を求める
+- 042 Multiple of 9（★4）：DP を使って解く。数が 1 増えるごとの解がどう変化していくかに着目する
 
 # AtCoder Beginer Contest
 
