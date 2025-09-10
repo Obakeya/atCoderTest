@@ -26,9 +26,9 @@
 # AtCoder Beginer Contest
 
 - 293
-
   - C - Make Takahashi Happy：後戻り方向のない移動なので DFS ではなく、バックトラッキング。二次元座標での x,y の取り違え注意
-
+- 335
+  - D - Loong and Takahashi:螺旋状パターン生成、左上から始める、進行方向を dx,dy の組で表現する、今の進行方向を index とし、その index で進行方向用の値を採る
 - 420
   - C - Sum of Min QUery：事前の和計算と差分計算
   - D - Toogle Maze：3 次元 BFS[状態,x,y]、2 次元グリッドでの A→B の最短距離を求める
