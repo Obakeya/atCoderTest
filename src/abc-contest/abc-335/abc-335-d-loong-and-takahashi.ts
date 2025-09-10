@@ -16,7 +16,7 @@ export function solve (input: string) {
   let x = 0,
     y = 0 // 現在位置
   let k = 0 // 現在の方向（0:右、1:下、2:左、3:上）
-  let crr = 1 // 配置する数字
+  let crr = 1 // 配置する数字 currentの意味
 
   grid[0][0] = 1 // 開始位置に1を配置
 

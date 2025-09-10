@@ -25,6 +25,8 @@
 
 # AtCoder Beginer Contest
 
+- 081
+  - C Not So Diverse：記憶用の配列作成、インデックスの位置と数字の値を一致させてカウント、値が多い順にソート。許容数を超える分を slice して合計値を累積して出力
 - 293
   - C - Make Takahashi Happy：後戻り方向のない移動なので DFS ではなく、バックトラッキング。二次元座標での x,y の取り違え注意
 - 335
