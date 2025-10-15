@@ -169,7 +169,7 @@ console.log(answer.toString()) // 出力時は文字列化
 
 計算量が多い場合でも、BigInt の演算速度は実用的なレベル。
 
-### N 進数に変換する
+### 10 進数を N 進数に変換する
 
 `toString()` を利用する
 
@@ -179,6 +179,35 @@ const changed = base.toString(radix)
 
 ///9 * 10 ^ 18 まで膨らむ和や積が必要なら、BigIntを用いる
 const safeChanged = BigInt(base).toString(radix)
+```
+
+### N 進数を 10 進数に変換する
+
+```ts
+function octalToBase9(octal: string): string {
+  // 8 進数を 10 進数に変換
+  const decimal = parseInt(octal, 8)
+
+  // 10 進数を 9 進数に変換
+  const base9 = decimal.toString(9)
+
+  return base9
+}
+
+// 使用例
+console.log(octalToBase9('123')) // 8 進数の 123 → 10 進数の 83 → 9 進数の'101'
+console.log(octalToBase9('777')) // 8 進数の 777 → 10 進数の 511 → 9 進数の'627'
+```
+
+### BigInt での進数変換
+
+巨大な数値を扱うときは、BigInt を用いて変換する。
+
+```ts
+const oct2 = BigInt('0o' + '1234567') // 8 進数文字列から 10 進数への変換
+const hex2 = BigInt('0x' + 'ABCDEF') // 16 進数文字列から 10 進数への変換
+const bin2 = BigInt('0b' + '101010') // 2 進数文字列から 10 進数への変換
+const dec1 = BigInt('12345') // 10 進数文字列から 10 進数への変換
 ```
 
 ### 平方根を求める
